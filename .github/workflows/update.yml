@@ -1,0 +1,34 @@
+on:
+    workflow_dispatch:
+    schedule:
+      - cron: '*/10 * * * *'
+  
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/checkout@v4
+          with:
+            path: ${{ github.workspace }}/license_data
+            fetch-depth: 0
+            ssh-key: ${{ secrets.PRIVATE_SSH_KEY }}
+            repository: SpriteRoms/license_data
+        - uses: actions/setup-go@v4
+          with:
+            go-version: 1.25
+        - uses: mobiledevops/secret-to-file-action@v1
+          with:
+            base64-encoded-secret: ${{ secrets.AES_KEY }}
+            filename: "key.go"
+            is-executable: false
+            working-directory: "./"
+        - run: |
+            go install mvdan.cc/garble@latest
+            cp ${{ github.workspace }}/license_data/data/users.csv ./users.csv
+            ./build.sh
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A web/
+            git commit --amend --no-edit
+            git push -f
