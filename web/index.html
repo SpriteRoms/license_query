@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Muhamad Nauval Azhar">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="SpriteROM License Query">
+	<title>SpriteROM</title>
+	<link href="bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-5">
+						<!-- <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo"
+							width="100"> -->
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4">查询License</h1>
+							<form class="needs-validation" novalidate="true" autocomplete="off">
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="query_string">请输入激活码</label>
+									<input id="query_string" type="text" class="form-control" name="query" value=""
+										required autofocus>
+									<div id="query_feedback" class="invalid-feedback">
+										未找到对应license(激活码不存在或尚未使用)，请检查输入是否正确或等待数据更新（≤120分钟）。如有疑问，请联系管理员。
+										<br />
+										<br />
+										注意，新授权被添加后需要刷新本页面才能查询到。
+									</div>
+								</div>
+
+								<div class="d-flex align-items-center">
+									<button type="submit" class="btn btn-primary ms-auto">
+										查询
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="text-center mt-5 text-muted">
+						Copyright &copy; Sprite ROM
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="js/wasm_exec.js"></script>
+	<script src="js/login.js"></script>
+</body>
+
+</html>
